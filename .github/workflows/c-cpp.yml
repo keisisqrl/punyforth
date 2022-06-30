@@ -1,0 +1,25 @@
+name: C/C++ CI
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+env:
+  MODULES: "../../generic/forth/core.forth ../../generic/forth/punit.forth ../../generic/forth/ringbuf.forth  ../../generic/forth/ringbuf_test.forth ../../generic/forth/test.forth"
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: cd
+      run: cd arch/x86
+    - name: build
+      run: "gcc -m32 -nostdlib -I. ../../main.S -o punyforth"
+    - name: chmod
+      run: chmod +x punyforth
+    - name: run stuff
+      run: cat $MODULES | ./punyforth
