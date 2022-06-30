@@ -6,7 +6,7 @@ on:
   pull_request:
     branches: [ "master" ]
 env:
-  MODULES: "../../generic/forth/core.forth ../../generic/forth/punit.forth ../../generic/forth/ringbuf.forth  ../../generic/forth/ringbuf_test.forth ../../generic/forth/test.forth"
+  MODULES: "generic/forth/core.forth generic/forth/punit.forth generic/forth/ringbuf.forth  generic/forth/ringbuf_test.forth generic/forth/test.forth"
 
 jobs:
   build:
