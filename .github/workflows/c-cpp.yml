@@ -16,7 +16,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: build
-      run: gcc -m32 -nostdlib -Iarch/x86 ../../main.S -o punyforth"
+      run: gcc -m32 -nostdlib -Iarch/x86 ../../main.S -o punyforth
     - name: chmod
       run: chmod +x punyforth
     - name: check for undefined words
