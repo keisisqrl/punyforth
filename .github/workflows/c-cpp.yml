@@ -19,5 +19,7 @@ jobs:
       run: "cd arch/x86; gcc -m32 -nostdlib -I. ../../main.S -o punyforth"
     - name: chmod
       run: chmod +x arch/x86/punyforth
-    - name: run stuff
-      run: cat $MODULES | ./arch/x86/punyforth
+    - name: check for undefined words
+      run: cat $MODULES | ./arch/x86/punyforth | grep "Undefined word" | wc -l | grep -q 0
+    - name: check for all tests passed
+      run: cat $MODULES | ./arch/x86/punyforth | grep "All passed" | wc -l | grep -q 1
