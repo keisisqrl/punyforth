@@ -16,10 +16,10 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: build
-      run: "cd arch/x86; gcc -m32 -nostdlib -I. ../../main.S -o punyforth"
+      run: gcc -m32 -nostdlib -Iarch/x86 ../../main.S -o punyforth"
     - name: chmod
-      run: chmod +x arch/x86/punyforth
+      run: chmod +x punyforth
     - name: check for undefined words
-      run: cat $MODULES | ./arch/x86/punyforth | grep "Undefined word" | wc -l | grep -q 0
+      run: cat $MODULES | ./punyforth | grep "Undefined word" | wc -l | grep -q 0
     - name: check for all tests passed
-      run: cat $MODULES | ./arch/x86/punyforth | grep "All passed" | wc -l | grep -q 1
+      run: cat $MODULES | ./punyforth | grep "All passed" | wc -l | grep -q 1
