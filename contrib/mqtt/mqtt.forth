@@ -1,8 +1,7 @@
 
-stack-clear 
 \ common words for communication with mqtt broker
 NETCON load 
-DECOMP load 
+
 
 \ configuration for communicating with your broker
 "192.168.1.172" constant: broker_addr 
